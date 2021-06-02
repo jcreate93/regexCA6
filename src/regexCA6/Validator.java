@@ -1,21 +1,25 @@
 package regexCA6;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 
 public class Validator {
 
-	public static void main (String[] args) throws FileNotFoundException{
+	public static void main (String[] args) throws IOException{
 		
 		Scanner scnr =new Scanner(System.in);
 		
 		//variables
-		String username;
-		String password;
+		String username = null;
+		String password = null;
+		String currUser;
+		String currPass;
 		boolean foundUser = false;
 		boolean foundPass = false;
+		FileInputStream fileByteStream = null;
+		Scanner inFS = null;
 
 		
 		while(foundUser == false) {
@@ -34,6 +38,8 @@ public class Validator {
 				}
 			}
 			
+		
+		
 		//user enters password :: Password must: 1. Contain 8 to 12 characters 2. Can include letters, numbers or symbols -- could also be written as [a-zA-Z0-9\\W] where the period is at
 		while(foundPass == false) {
 			System.out.println("Enter password: ");
@@ -42,13 +48,49 @@ public class Validator {
 				System.out.println("It's a match!");
 				foundPass = true;
 				}
+				
 			else {
 				System.out.println("Not a match!");
 				foundPass = false;
 			}
 		}
 		
-	
+		
+		//validating username and password match text file
+		if (foundUser==true && foundPass==true){
+			
+			//opens file and starts verifying username and password against the text file
+			System.out.println("Opening file... "); //Opening file loginMatch.txt.
+			fileByteStream = new FileInputStream("checkLogin.txt"); //created a new fileInputStream
+			inFS = new Scanner(fileByteStream);
+			
+			System.out.println("Verifying your username and password.");
+			while (inFS.hasNext()) {
+				currUser = inFS.next();
+		    	currPass = inFS.next();
+			
+		    	if (currUser.equals(username)) {
+		    		foundUser = true;
+		    		System.out.print("Username verified.\n");
+		    		if (currPass.equals(password)) {
+			    		foundPass = true;
+			    		System.out.print("Password verified.\n");
+			    		return;
+			    		}
+		    		else {
+			    		System.out.print("Password incorrect.");
+			    		return;
+			    		}
+		    		}
+		    
+			}
+			 System.out.println("Username not found");
+			  //close confidentialInfo.txt file
+			    System.out.println("Closing program...");  
+			    fileByteStream.close();
+		}  	
+		    	
+			
 		
 		
 		
@@ -56,5 +98,7 @@ public class Validator {
 		
 		
 		
+		
+
 	}
 }
