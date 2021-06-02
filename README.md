@@ -1,2 +1,2 @@
 # regexCA6
-login validator that matches patterns with regex
+login (username and password) validator that matches patterns with regex
