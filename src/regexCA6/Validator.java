@@ -83,6 +83,7 @@ public class Validator {
 			    		if (currPass.equals(password)) {
 				    		foundPass = true;
 				    		System.out.print("Password verified.\n");
+				    		System.out.println("Welcome " + currUser);
 				    		return;
 				    		}
 			    		else {
