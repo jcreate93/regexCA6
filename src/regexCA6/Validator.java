@@ -60,7 +60,10 @@ public class Validator {
 		}
 		
 		
-		//validating username and password match text file
+		/*validating username and password match text file
+		both username and password must be valid in order to continue 
+		with checking them against the FileInputStream
+		*/
 		if (foundUser==true && foundPass==true){
 			
 			//opens file and starts verifying username and password against the text file
