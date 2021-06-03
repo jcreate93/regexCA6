@@ -67,34 +67,42 @@ public class Validator {
 		if (foundUser==true && foundPass==true){
 			
 			//opens file and starts verifying username and password against the text file
-			System.out.println("Opening file... "); //Opening file loginMatch.txt.
-			fileByteStream = new FileInputStream("checkLogin.txt"); //created a new fileInputStream
-			inFS = new Scanner(fileByteStream);
-			
-			System.out.println("Verifying your username and password.");
-			while (inFS.hasNext()) {
-				currUser = inFS.next();
-		    	currPass = inFS.next();
-			
-		    	if (currUser.equals(username)) {
-		    		foundUser = true;
-		    		System.out.print("Username verified.\n");
-		    		if (currPass.equals(password)) {
-			    		foundPass = true;
-			    		System.out.print("Password verified.\n");
-			    		return;
+			try {
+				System.out.println("Opening file... "); //Opening file loginMatch.txt.
+				fileByteStream = new FileInputStream("checkLogin.txt"); //created a new fileInputStream
+				inFS = new Scanner(fileByteStream);
+				
+				System.out.println("Verifying your username and password.");
+				while (inFS.hasNext()) {
+					currUser = inFS.next();
+			    	currPass = inFS.next();
+				
+			    	if (currUser.equals(username)) {
+			    		foundUser = true;
+			    		System.out.print("Username verified.\n");
+			    		if (currPass.equals(password)) {
+				    		foundPass = true;
+				    		System.out.print("Password verified.\n");
+				    		return;
+				    		}
+			    		else {
+				    		System.out.print("Password incorrect.");
+				    		return;
+				    		}
 			    		}
-		    		else {
-			    		System.out.print("Password incorrect.");
-			    		return;
-			    		}
-		    		}
-		    
+			    	}
+			
+				 System.out.println("Username not found");
+				  //close confidentialInfo.txt file
+				    System.out.println("Closing program...");  
+				    fileByteStream.close();
 			}
-			 System.out.println("Username not found");
-			  //close confidentialInfo.txt file
-			    System.out.println("Closing program...");  
-			    fileByteStream.close();
+			catch (IOException excpt) {
+				System.out.println("Caught IOException: " + excpt.getMessage());
+			}
+			finally {
+				fileByteStream.close();
+			}
 		}  	
 		    	
 			
