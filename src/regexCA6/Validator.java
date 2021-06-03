@@ -1,3 +1,7 @@
+/*
+ * This class is intended to check that username and password entered follow the regex pattern,
+ *  and check that the username and password match the text document that was inputed
+ */
 package regexCA6;
 
 import java.io.FileInputStream;
