@@ -37,7 +37,7 @@ public class Validator {
 			foundUser = true;
 			}
 			else {
-				System.out.println("Not a match!");
+				System.out.println("Not a match!");      //what happens when username doesn't match regex pattern 
 				foundUser = false;
 				}
 			}
