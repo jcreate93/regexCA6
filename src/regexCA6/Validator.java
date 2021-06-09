@@ -73,8 +73,8 @@ public class Validator {
 				inFS = new Scanner(fileByteStream);
 				
 				System.out.println("Verifying your username and password.");
-				while (inFS.hasNext()) {
-					currUser = inFS.next();
+				while (inFS.hasNext()) {                                            
+					currUser = inFS.next();                                //matches inputed username to the text file
 			    	currPass = inFS.next();
 				
 			    	if (currUser.equals(username)) {
