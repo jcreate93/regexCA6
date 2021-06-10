@@ -23,6 +23,7 @@ public class Validator {
 		boolean foundUser = false;
 		boolean foundPass = false;
 		FileInputStream fileByteStream = null;
+		Menu startScreen = new Menu();
 		Scanner inFS = null;
 
 		
@@ -84,6 +85,7 @@ public class Validator {
 				    		foundPass = true;
 				    		System.out.print("Password verified.\n");
 				    		System.out.println("Welcome " + currUser);
+				    		startScreen.options();
 				    		return;
 				    		}
 			    		else {
